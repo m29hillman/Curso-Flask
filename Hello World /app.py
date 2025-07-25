@@ -18,6 +18,16 @@ def index():
     return '<h1>Hello World!</h1>'
 
 
+# Esta rota demonstra como retornar um código de status HTTP diferente.
+# Por padrão, o Flask retorna o código 200 (OK).
+@app.route('/bad')
+def bad_request():
+    """Retorna uma resposta de erro 400 - Bad Request."""
+    # Ao retornar uma tupla, podemos especificar o corpo da resposta
+    # e o código de status. O formato é (corpo, status_code).
+    # O navegador receberá o status 400, indicando um erro do cliente.
+    return '<h1>Bad Request!</h1>', 400
+
 # Esta é uma rota dinâmica. A parte `<name>` na URL é um placeholder.
 # Qualquer texto colocado nessa parte da URL será capturado e passado
 # como o argumento `name` para a função `user()`.
