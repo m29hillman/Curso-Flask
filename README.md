@@ -53,7 +53,20 @@ pip install -r requirements.txt
 
 ### Passo 4: Executar a Aplicação Flask
 
-Após instalar as dependências, você pode iniciar o servidor de desenvolvimento do Flask. O arquivo principal da aplicação em cada exercício é o `app.py`. Para executá-lo, use o comando `flask`:
+Após instalar as dependências, você pode iniciar o servidor de desenvolvimento do Flask. O arquivo principal da aplicação em cada exercício é o `app.py`.
+
+Existem duas maneiras comuns de executar a aplicação:
+
+#### Método 1: Usando o comando `flask` (Recomendado)
+
+Esta é a forma moderna e mais flexível de iniciar o servidor.
+
+```bash
+flask --app app run
+```
+#### Método 2: Usando o comando `python` 
+
+Para iniciar a aplicação, execute o script principal diretamente com o interpretador Python. Certifique-se de que você está no diretório raiz do projeto.
 
 ```bash
 python app.py
