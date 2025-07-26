@@ -1,0 +1,30 @@
+{#Esta é a diretiva mais importante para a herança.#} 
+{#Ela diz ao motor de templates (Jinja2) para usar o arquivo "base.html" como o esqueleto desta página.#} 
+{#Todo o conteúdo de "base.html" será carregado primeiro.#}
+{% extends "base.html" %}
+
+{#Aqui, estamos definindo o conteúdo para o bloco chamado "body".#}
+{#Este conteúdo irá substituir o bloco {% block body %}{% endblock %} que está no arquivo pai "base.html".#}
+{% block body %}
+    <div class="container">
+        <!-- <h1> define o cabeçalho mais importante. É bom para SEO e estrutura do documento. -->
+        
+        <!-- Inicia a estrutura de controle 'if' do Jinja2. -->
+        <!-- Ele verifica se a variável 'name' passada pelo Flask existe e não é "falsa" (ex: não é None, nem uma string vazia). -->
+        {% if name %}
+            <!-- Se a condição for verdadeira, este h1 será renderizado. -->
+            <!-- {{name}} será substituído pelo valor real da variável 'name'. -->
+            <h1>Olá, {{name}}!</h1>
+        
+        <!-- A cláusula 'else' é executada se a condição do 'if' for falsa. -->
+        {% else %}    
+            <!-- Se 'name' não existir ou for "falso", este h1 genérico será renderizado. -->
+            <h1>Olá, estranho!</h1>
+        
+        <!-- A tag 'endif' é obrigatória e fecha o bloco da estrutura de controle. -->
+        {% endif %}
+
+        <!-- <p> define um parágrafo. -->
+        <p>Esta é uma página HTML simples com um estilo moderno.</p>
+    </div>
+{% endblock %}

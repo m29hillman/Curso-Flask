@@ -1,0 +1,28 @@
+{#Esta é a diretiva mais importante para a herança.#} 
+{#Ela diz ao motor de templates (Jinja2) para usar o arquivo "base.html" como o esqueleto desta página.#} 
+{#Todo o conteúdo de "base.html" será carregado primeiro.#}
+{% extends "base.html" %}
+
+{#Aqui, estamos definindo o conteúdo para o bloco chamado "body".#}
+{#Este conteúdo irá substituir o bloco {% block body %}{% endblock %} que está no arquivo pai "base.html".#}
+{% block body %}
+    <div class="container">
+        <!-- <h1> define o cabeçalho mais importante. É bom para SEO e estrutura do documento. -->
+        <h1>Lista de Usuários</h1>
+
+        <ul>
+            <!-- Inicia um loop 'for' que irá percorrer cada item na lista 'usuarios'. -->
+            <!-- A cada iteração, o item atual será armazenado na variável 'usuario'. -->
+            {% for usuario in usuarios %}
+                <!-- Este item de lista (<li>) será criado para cada usuário na lista. -->
+                <!-- O valor da variável 'usuario' da iteração atual é inserido aqui. -->
+                <li>{{usuario}}</li>
+            
+            <!-- 'endfor' é obrigatório e fecha o bloco do loop. -->
+            {% endfor %}
+        </ul>
+
+        <!-- <p> define um parágrafo. -->
+        <p>Esta é uma página HTML simples com um estilo moderno.</p>
+    </div>
+{% endblock %}
