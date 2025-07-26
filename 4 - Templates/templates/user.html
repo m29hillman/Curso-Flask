@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!-- A declaração DOCTYPE define o tipo de documento como HTML5. É a primeira coisa em seu documento HTML, antes da tag <html>. -->
+<html lang="pt-BR">
+<!-- A tag <html> é o elemento raiz de uma página HTML. O atributo 'lang' define o idioma do documento, o que é útil para acessibilidade e motores de busca. -->
+
+<head>
+    <!-- A tag <head> é um contêiner para metadados (dados sobre os dados) e é colocada entre a tag <html> e a tag <body>. -->
+    
+    <!-- O charset UTF-8 é uma codificação de caracteres universal que suporta a maioria dos caracteres e símbolos. É essencial para exibir corretamente acentos e outros caracteres especiais. -->
+    <meta charset="UTF-8">
+    
+    <!-- Esta meta tag controla como a página será exibida em dispositivos móveis. 'width=device-width' define a largura da página para seguir a largura da tela do dispositivo, e 'initial-scale=1.0' define o nível de zoom inicial. Essencial para design responsivo. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- A tag <title> define o título do documento, que é exibido na barra de título do navegador ou na aba da página. -->
+    <title>Olá, Mundo!</title>
+    
+    <!-- A tag <style> é usada para adicionar estilos CSS diretamente no documento HTML. -->
+    <style>
+        /* O seletor 'body' aplica estilos a todo o corpo da página. */
+        body {
+            /* Define uma fonte moderna e limpa. Se a primeira não estiver disponível, o navegador tentará a próxima. */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            /* Define a cor de fundo da página com um cinza muito claro. */
+            background-color: #f0f2f5;
+            /* Define a cor do texto principal. */
+            color: #333;
+            /* Remove as margens padrão do body. */
+            margin: 0;
+            /* Remove o preenchimento padrão. */
+            padding: 0;
+            /* Usa Flexbox para centralizar o conteúdo. */
+            display: flex;
+            /* Alinha os itens verticalmente ao centro. */
+            align-items: center;
+            /* Alinha os itens horizontalmente ao centro. */
+            justify-content: center;
+            /* Garante que o body ocupe 100% da altura da janela de visualização. */
+            height: 100vh;
+        }
+
+        /* O seletor '.container' aplica estilos ao nosso contêiner principal. */
+        .container {
+            /* Alinha o texto ao centro dentro do contêiner. */
+            text-align: center;
+            /* Adiciona um preenchimento interno. */
+            padding: 40px;
+            /* Define uma cor de fundo branca para o contêiner. */
+            background-color: white;
+            /* Adiciona cantos arredondados. */
+            border-radius: 10px;
+            /* Adiciona uma sombra sutil para dar um efeito de "elevação". */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estiliza o cabeçalho principal (h1). */
+        h1 {
+            color: #007bff; /* Um azul vibrante */
+            font-size: 3em; /* 'em' é uma unidade relativa ao tamanho da fonte do elemento pai. */
+        }
+
+        /* Estiliza o parágrafo (p). */
+        p {
+            font-size: 1.2em;
+            color: #6c757d; /* Um cinza mais suave */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- A tag <body> define o corpo do documento. Contém todo o conteúdo de uma página HTML, como textos, hiperlinks, imagens, etc. -->
+    <div class="container">
+        <!-- <h1> define o cabeçalho mais importante. É bom para SEO e estrutura do documento. -->
+        <h1>Olá, {{name}}!</h1>
+        <!-- <p> define um parágrafo. -->
+        <p>Esta é uma página HTML simples com um estilo moderno.</p>
+    </div>
+</body>
+</html>
+
