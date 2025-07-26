@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- 'content' é o bloco principal para o conteúdo da sua página. -->
+<!-- O que for definido aqui aparecerá no corpo principal da página, geralmente dentro de um <div class="container">. -->
+<div class="container">
+    <div class="page-header">
+        <!-- <h1> define o cabeçalho mais importante. É bom para SEO e estrutura do documento. -->
+        
+        <!-- Inicia a estrutura de controle 'if' do Jinja2. -->
+        <!-- Ele verifica se a variável 'name' passada pelo Flask existe e não é "falsa" (ex: não é None, nem uma string vazia). -->
+        {% if name %}
+            <!-- Se a condição for verdadeira, este h1 será renderizado. -->
+            <!-- {{name}} será substituído pelo valor real da variável 'name'. -->
+            <h1>Olá, {{name}}!</h1>
+        
+        <!-- A cláusula 'else' é executada se a condição do 'if' for falsa. -->
+        {% else %}    
+            <!-- Se 'name' não existir ou for "falso", este h1 genérico será renderizado. -->
+            <h1>Olá, estranho!</h1>
+        
+        <!-- A tag 'endif' é obrigatória e fecha o bloco da estrutura de controle. -->
+        {% endif %}
+
+        <!-- Aqui usamos o Flask-Moment para renderizar a data/hora passada pela view. -->
+        <!-- 'current_time' é o objeto datetime que passamos em app.py. -->
+        <!-- 'moment()' o envolve, permitindo que a biblioteca moment.js o manipule no navegador. -->
+        <!-- .format('LLL') formata a data para um formato longo e localizado (ex: "15 de setembro de 2023 10:30"). -->
+        <p>A data e hora local são: {{ moment(current_time).format('LLL') }}.</p>
+        <!-- .fromNow(refresh=True) é o recurso mais dinâmico do Flask-Moment. -->
+        <!-- Ele exibe o tempo de forma relativa (ex: "há alguns segundos"). -->
+        <!-- O 'refresh=True' faz com que este texto se atualize automaticamente a cada minuto, sem recarregar a página. -->
+        <p>Isso foi atualizado {{ moment(current_time).fromNow(refresh=True) }}</p>
+    </div>
+</div>
+{% endblock %}
