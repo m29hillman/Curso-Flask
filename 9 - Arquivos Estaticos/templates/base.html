@@ -1,0 +1,42 @@
+{% extends "bootstrap/base.html" %}
+<!-- Esta linha é o ponto central da integração com o Flask-Bootstrap. -->
+<!-- Ela instrui o Jinja2 a herdar de um template base ('base.html') fornecido pela extensão. -->
+<!-- Este template base já inclui todo o CSS e JavaScript do Bootstrap, além de definir blocos que podemos sobrescrever. -->
+<!-- O bloco 'head' permite adicionar ou modificar o conteúdo da tag <head> do HTML. -->
+{% block head %} 
+    <!-- 'super()' é uma função especial do Jinja2. -->
+    <!-- Ela renderiza o conteúdo original do bloco 'head' do template pai ('bootstrap/base.html'). -->
+    <!-- Isso é ESSENCIAL para garantir que os arquivos CSS e JS do Bootstrap sejam carregados. -->
+    {{ super() }} 
+
+    <!-- A linha abaixo adiciona um 'favicon' (o ícone que aparece na aba do navegador). -->
+    <!-- 'url_for('static', ...)' é a função do Flask para gerar o URL correto para arquivos na pasta 'static'. -->
+    <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/x-icon">
+{% endblock %}
+
+{% block title %}Flasky{% endblock %}
+<!-- 'title' é um dos blocos definidos em 'bootstrap/base.html'. -->
+<!-- O conteúdo que colocamos aqui será inserido na tag <title> do HTML final. -->
+
+{% block navbar %}
+<!-- 'navbar' é outro bloco do template base do Flask-Bootstrap. -->
+<!-- Podemos preenchê-lo com a estrutura de uma barra de navegação Bootstrap, como feito abaixo. -->
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Flasky</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
