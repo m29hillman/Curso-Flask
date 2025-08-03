@@ -1,14 +1,29 @@
-# Importa a classe principal da extensão Flask-WTF, que integra a biblioteca wtforms.
+# --- Importações ---
+# Flask-WTF é uma extensão que integra o WTForms com o Flask, facilitando a criação e validação de formulários web.
+# FlaskForm é a classe base para todos os formulários criados com Flask-WTF.
 from flask_wtf import FlaskForm
-# Importa os tipos de campo `StringField` (para texto) e `SubmitField` (para botão de envio) do WTForms.
-from wtforms import StringField, SubmitField
-# Importa o validador `DataRequired`, que garante que um campo não seja enviado vazio.
-from wtforms.validators import DataRequired
-# Importa a classe datetime do módulo padrão do Python para trabalhar com datas e horas.
 
-# Define uma classe de formulário `NameForm` que herda de `FlaskForm`.
+# WTForms é uma biblioteca de renderização e validação de formulários para Python.
+# StringField: Representa um campo de entrada de texto (<input type="text">).
+# SubmitField: Representa um botão de envio (<input type="submit">).
+from wtforms import StringField, SubmitField
+
+# O módulo de validadores do WTForms fornece funções para validar os dados de entrada do formulário.
+# DataRequired: É um validador que verifica se o campo foi preenchido e não está vazio.
+from wtforms.validators import DataRequired
+
+# --- Definição do Formulário ---
+
+# Define a classe 'NameForm' que herda de 'FlaskForm'.
+# Esta classe irá representar a estrutura do nosso formulário HTML.
+# Cada atributo da classe que é uma instância de um tipo de campo (como StringField)
+# será renderizado como um campo de formulário no template.
 class NameForm(FlaskForm):
-    # Cria um campo de texto com o rótulo 'Qual é o seu nome?' e um validador que exige preenchimento.
+    # Define o campo 'name'.
+    # O primeiro argumento ('Qual é o seu nome?') é o rótulo (label) que será exibido ao lado do campo no HTML.
+    # O argumento 'validators' é uma lista de validadores a serem aplicados a este campo.
+    # [DataRequired()] garante que o usuário deve digitar algo neste campo para que o formulário seja válido.
     name = StringField('Qual é o seu nome?', validators=[DataRequired()])
-    # Cria um botão de envio com o rótulo 'Enviar'.
+    # Define o campo 'submit'.
+    # O argumento ('Enviar') é o texto que aparecerá no botão de envio.
     submit = SubmitField('Enviar')
