@@ -1,0 +1,40 @@
+from extensions import mail
+from flask_mail import Message
+from threading import Thread
+
+def send_async_email(app, msg):
+    """
+    Função auxiliar para envio assíncrono de e-mails.
+    Executa o envio dentro do contexto da aplicação Flask.
+    Isso permite que o envio não bloqueie o fluxo principal da aplicação.
+    """
+    with app.app_context(): 
+        mail.send(msg)
+
+def send_email(app, subject, recipients, body, html=None):
+    """
+    Função para envio de e-mails.
+    Parâmetros:
+    - app: instância da aplicação Flask
+    - subject: assunto do email
+    - recipients: lista de destinatários
+    - body: corpo do email em texto
+    - html: corpo do email em HTML (opcional)
+
+    Cria a mensagem, define remetente e dispara o envio em uma thread separada.
+    O uso de threads evita que o usuário espere pelo envio do e-mail.
+    """
+    with app.app_context():
+        msg = Message(
+            subject=subject,
+            recipients=recipients,
+            body=body,
+            html=html,
+            sender=app.config["FLASKY_MAIL_SENDER"]
+        )
+        # Cria uma thread para envio assíncrono do e-mail.
+        thr = Thread(target=send_async_email, args=[app, msg])
+        thr.start()
+        return thr
+        # Se preferir envio síncrono, descomente a linha abaixo
+        # mail.send(msg)
