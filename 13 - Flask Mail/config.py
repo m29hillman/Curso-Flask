@@ -16,11 +16,11 @@ class Config:
     """
 
     # Chave secreta usada para sessões e proteção contra CSRF.
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'hard to guess string'
+    SECRET_KEY = os.environ.get('SECRET_KEY')
     # Configurações do servidor de e-mail.
-    MAIL_SERVER = os.environ.get('MAIL_SERVER', 'smtp.googlemail.com') 
-    MAIL_PORT = int(os.environ.get('MAIL_PORT', '587')) 
-    MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS', 'true').lower() in ['true', 'on', '1'] 
+    MAIL_SERVER = os.environ.get('MAIL_SERVER') 
+    MAIL_PORT = int(os.environ.get('MAIL_PORT')) 
+    MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS').lower()
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME') 
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD') 
     # Prefixo do assunto dos e-mails enviados pela aplicação.
