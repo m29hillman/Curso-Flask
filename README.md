@@ -57,9 +57,44 @@ Após instalar as dependências, você pode iniciar o servidor de desenvolviment
 
 Existem duas maneiras comuns de executar a aplicação:
 
-#### Método 1: Usando o comando `flask` (Recomendado)
+#### Método 1: Configurando Variáveis de Ambiente (Recomendado)
 
-Esta é a forma moderna e mais flexível de iniciar o servidor.
+Esta é a forma mais prática para desenvolvimento, pois permite usar comandos simplificados como `flask run` e comandos customizados como `flask test`. Configure as seguintes variáveis de ambiente no seu terminal:
+
+*   `FLASK_APP`: Aponta para o arquivo principal da sua aplicação (geralmente `app.py` ou, em projetos mais complexos, `flasky.py`).
+*   `FLASK_ENV`: Define o ambiente. Use `development` para ativar o modo de depuração (debug mode com recarregamento automático).
+
+**No Linux ou macOS:**
+```bash
+export FLASK_APP=app.py # ou flasky.py, dependendo do exercício
+export FLASK_ENV=development
+```
+
+**No Windows (CMD):**
+```bash
+set FLASK_APP=app.py
+set FLASK_ENV=development
+```
+
+**No Windows (PowerShell):**
+```powershell
+$env:FLASK_APP = "app.py"
+$env:FLASK_ENV = "development"
+```
+
+Com as variáveis configuradas, você pode iniciar o servidor com o comando simplificado:
+```bash
+flask run
+```
+
+E executar os testes (nos projetos que os possuem) com:
+```bash
+flask test
+```
+
+#### Método 2: Usando o comando `flask` com flags
+
+Se não quiser configurar variáveis de ambiente, você pode passar a informação diretamente na linha de comando.
 
 ```bash
 flask --app app run
